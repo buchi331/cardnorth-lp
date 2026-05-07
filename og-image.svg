@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f5f6fb"/>
+      <stop offset="50%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#eef0f7"/>
+    </linearGradient>
+    <radialGradient id="halo1" cx="0.92" cy="0.10" r="0.55">
+      <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="halo2" cx="0.05" cy="0.95" r="0.5">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="halo3" cx="0.78" cy="0.82" r="0.4">
+      <stop offset="0%" stop-color="#ec4899" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#ec4899" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="brandBg" cx="0.5" cy="0.45" r="0.7">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="55%" stop-color="#4f46e5"/>
+      <stop offset="100%" stop-color="#312e81"/>
+    </radialGradient>
+    <pattern id="dots" width="36" height="36" patternUnits="userSpaceOnUse">
+      <circle cx="18" cy="18" r="1" fill="#0f172a" opacity="0.06"/>
+    </pattern>
+  </defs>
+
+  <!-- Background layers -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#dots)"/>
+  <rect width="1200" height="630" fill="url(#halo1)"/>
+  <rect width="1200" height="630" fill="url(#halo2)"/>
+  <rect width="1200" height="630" fill="url(#halo3)"/>
+
+  <!-- Brand row: logo + wordmark -->
+  <g transform="translate(96, 110)">
+    <rect width="92" height="92" rx="22" fill="url(#brandBg)"/>
+    <g transform="translate(46, 46) scale(0.35)">
+      <polygon points="-66,16 38,16 52,47 -52,47" fill="#ffffff" opacity="0.4"/>
+      <polygon points="-58,-16 46,-16 60,16 -44,16" fill="#ffffff" opacity="0.7"/>
+      <polygon points="-52,-47 52,-47 66,-16 -38,-16" fill="#ffffff"/>
+    </g>
+    <text x="118" y="64" font-family="Plus Jakarta Sans, -apple-system, sans-serif" font-weight="800" font-size="56" fill="#0f172a" letter-spacing="-2">CardNorth</text>
+  </g>
+
+  <!-- Main tagline -->
+  <text x="96" y="320" font-family="Noto Sans JP, -apple-system, sans-serif" font-weight="800" font-size="58" fill="#0f172a" letter-spacing="-1.5">eBay トレカセラーのための、</text>
+  <text x="96" y="394" font-family="Noto Sans JP, -apple-system, sans-serif" font-weight="800" font-size="58" fill="#4f46e5" letter-spacing="-1.5">AI 在庫・価格 自動最適化 SaaS。</text>
+
+  <!-- Sub line -->
+  <text x="96" y="460" font-family="Noto Sans JP, -apple-system, sans-serif" font-weight="500" font-size="26" fill="#475569" letter-spacing="0.3">日本から世界へ。在庫と価格の調整を、毎日自動で。</text>
+
+  <!-- Bottom row: status pill + URL -->
+  <g transform="translate(96, 540)">
+    <rect x="0" y="0" width="218" height="44" rx="22" fill="#0f172a"/>
+    <text x="109" y="29" font-family="JetBrains Mono, monospace" font-weight="600" font-size="13" fill="#ffffff" text-anchor="middle" letter-spacing="2">β · 2026 RELEASE</text>
+  </g>
+
+  <text x="1104" y="568" font-family="Plus Jakarta Sans, -apple-system, sans-serif" font-weight="700" font-size="24" fill="#475569" text-anchor="end" letter-spacing="0.2">cardnorth.app</text>
+
+  <!-- Decorative chart sparkline (top right) -->
+  <g transform="translate(720, 90)" opacity="0.7">
+    <defs>
+      <linearGradient id="sparkFill" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.30"/>
+        <stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <path d="M0,80 L40,72 L80,76 L120,58 L160,62 L200,42 L240,46 L280,28 L320,32 L360,12 L380,16" fill="url(#sparkFill)" stroke="#a78bfa" stroke-width="2.4"/>
+    <polyline points="0,80 40,72 80,76 120,58 160,62 200,42 240,46 280,28 320,32 360,12 380,16" stroke="#a78bfa" stroke-width="2.4" fill="none"/>
+    <circle cx="380" cy="16" r="6" fill="#fbbf24"/>
+    <circle cx="380" cy="16" r="11" fill="#fbbf24" opacity="0.18"/>
+  </g>
+</svg>
