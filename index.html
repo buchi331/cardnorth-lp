@@ -856,6 +856,8 @@
   .acc-purple { --acc: #7c3aed; --acc-bg: rgba(124,58,237,0.12); }
   .acc-indigo { --acc: #4f46e5; --acc-bg: rgba(99,102,241,0.12); }
   .media-slot.slot-accent { background: var(--acc-bg, rgba(99,102,241,0.10)); color: var(--acc, var(--indigo)); }
+  /* お悩みのイラストは全体を見せる(切り抜かない) */
+  .pain-card .media-slot > img { object-fit: contain; padding: 6px; }
 
   /* ===== Solution flow band (課題 → 解決 の橋渡し) ===== */
   .solution .section-eyebrow { display: block; text-align: center; }
@@ -1015,7 +1017,7 @@
     <div class="pain-grid">
       <div class="pain-card acc-rose">
         <div class="media-slot slot-accent">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <img src="screens/pain-1.png" alt="相場を毎日追って価格調整に悩む様子">
         </div>
         <div class="pain-head"><span class="pain-no">1</span><span class="pain-label">お悩み</span></div>
         <div class="pain-text">毎日相場を追って、価格調整するのが面倒。</div>
@@ -1023,7 +1025,7 @@
       </div>
       <div class="pain-card acc-amber">
         <div class="media-slot slot-accent">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 7 9 13 13 9 21 17"/><polyline points="16 17 21 17 21 12"/></svg>
+          <img src="screens/pain-2.png" alt="売れ残りと機会損失に悩む様子">
         </div>
         <div class="pain-head"><span class="pain-no">2</span><span class="pain-label">お悩み</span></div>
         <div class="pain-text">価格調整を逃すと、機会損失と売れ残りの両方が発生。</div>
@@ -1031,7 +1033,7 @@
       </div>
       <div class="pain-card acc-cyan">
         <div class="media-slot slot-accent">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M3 14h18M9 4v16M15 4v16"/></svg>
+          <img src="screens/pain-3.png" alt="在庫・出品管理に追われて参っている様子">
         </div>
         <div class="pain-head"><span class="pain-no">3</span><span class="pain-label">お悩み</span></div>
         <div class="pain-text">eBay 出品が100枚を超えると、Excel管理が限界。</div>
