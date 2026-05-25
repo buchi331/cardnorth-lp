@@ -376,71 +376,6 @@
   }
 
 
-  /* ===== Features section (Bento style — 2-col with hero feature spanning) ===== */
-  .feat-grid {
-    display: grid;
-    grid-template-columns: 1.45fr 1fr;
-    grid-template-rows: auto auto auto;
-    gap: 14px;
-  }
-  @media (max-width: 800px) {
-    .feat-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
-  }
-  .feat-card {
-    background: var(--card-bg);
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    padding: 30px;
-    box-shadow: 0 1px 2px rgba(15,23,42,0.03), 0 12px 30px -20px rgba(15,23,42,0.20);
-    transition: border-color 0.2s, transform 0.2s, box-shadow 0.25s;
-    position: relative;
-    overflow: hidden;
-  }
-  .feat-card:hover { border-color: var(--line-strong); transform: translateY(-4px); box-shadow: 0 2px 4px rgba(15,23,42,0.04), 0 24px 48px -24px rgba(15,23,42,0.28); }
-  .feat-hero {
-    grid-column: 1;
-    grid-row: 1 / span 2;
-    padding: 36px;
-    background: linear-gradient(135deg, rgba(99,102,241,0.06), rgba(244,114,182,0.04));
-    border: 1px solid rgba(99,102,241,0.18);
-  }
-  @media (max-width: 800px) {
-    .feat-hero { grid-column: 1; grid-row: auto; }
-  }
-  .feat-tag {
-    display: inline-block;
-    background: rgba(217, 119, 6, 0.10);
-    color: var(--aurum);
-    padding: 4px 10px;
-    border-radius: 5px;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    font-family: 'JetBrains Mono', monospace;
-    margin-bottom: 14px;
-  }
-  .feat-num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10.5px;
-    color: var(--lavender);
-    font-weight: 600;
-    margin-bottom: 12px;
-    letter-spacing: 0.16em;
-  }
-  .feat-name {
-    font-size: 19px;
-    font-weight: 700;
-    margin-bottom: 8px;
-    letter-spacing: -0.015em;
-  }
-  .feat-hero .feat-name { font-size: 28px; line-height: 1.25; margin-bottom: 14px; }
-  .feat-desc {
-    font-size: 13.5px;
-    color: var(--text-mid);
-    line-height: 1.75;
-  }
-  .feat-hero .feat-desc { font-size: 16px; max-width: 480px; }
-  .feat-hero-visual { margin-top: 28px; opacity: 0.85; }
 
   /* ===== Audience pull-quote section ===== */
   .audience-wrap {
@@ -572,18 +507,6 @@
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
   .shot-frame > img { display: block; width: 100%; height: auto; }
-
-  /* ===== Feature icon badge ===== */
-  .feat-ico {
-    width: 46px; height: 46px;
-    border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    background: var(--acc-bg, rgba(99,102,241,0.10));
-    color: var(--acc, var(--indigo));
-    margin-bottom: 16px;
-  }
-  .feat-hero .feat-ico { background: rgba(99,102,241,0.14); }
-  .feat-ico svg { width: 23px; height: 23px; display: block; }
 
   /* ===== Hero v2 — colored split band ===== */
   header { background: #ffffff; }
@@ -924,6 +847,48 @@
     }
     .js .pain-card.in, .js .flow-step.in { opacity: 1; transform: none; }
   }
+
+  /* ===== 機能比較表(Free vs Pro)===== */
+  .compare-wrap { max-width: 760px; margin: 60px auto 0; }
+  .compare-lead { text-align: center; margin-bottom: 26px; }
+  .compare-lead .section-eyebrow { display: inline-block; margin-bottom: 10px; }
+  .compare-lead h3 { font-size: clamp(22px, 2.6vw, 30px); font-weight: 800; letter-spacing: -0.02em; }
+  .compare-lead p { font-size: 14px; color: var(--text-mid); margin-top: 8px; }
+  .compare {
+    border: 1px solid var(--line-strong); border-radius: 18px; overflow: hidden;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(15,23,42,0.03), 0 18px 44px -28px rgba(15,23,42,0.22);
+  }
+  .compare-row { display: grid; grid-template-columns: 1fr 88px 88px; align-items: center; }
+  .compare-thead { background: var(--bg-light); border-bottom: 1px solid var(--line-strong); }
+  .compare-thead > div {
+    padding: 13px 18px; font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-mid);
+  }
+  .compare-thead .col-free, .compare-thead .col-pro { text-align: center; padding-left: 4px; padding-right: 4px; }
+  .compare-thead .col-pro { color: var(--indigo); background: rgba(99,102,241,0.06); }
+  .compare-group {
+    padding: 9px 18px; background: #eef0f7; font-size: 12px; font-weight: 700;
+    color: var(--text-main); letter-spacing: 0.02em; border-top: 1px solid var(--line);
+  }
+  .compare-line { border-top: 1px solid var(--line); }
+  .compare-line .cf { padding: 12px 18px; font-size: 13.5px; color: var(--text-mid); line-height: 1.5; }
+  .compare-line .cv { padding: 12px 4px; text-align: center; }
+  .compare-line .cv.is-pro { background: rgba(99,102,241,0.045); }
+  .compare-val { font-size: 12px; font-weight: 700; }
+  .compare-val.free { color: var(--text-main); }
+  .compare-val.pro { color: var(--indigo); }
+  .ck { display: inline-flex; align-items: center; justify-content: center; width: 21px; height: 21px; border-radius: 50%; }
+  .ck svg { width: 12px; height: 12px; display: block; }
+  .ck.free { background: rgba(8,145,178,0.15); color: var(--cyan-soft); }
+  .ck.pro { background: var(--indigo); color: #fff; }
+  .ck-no { display: inline-block; width: 13px; height: 2px; border-radius: 2px; background: var(--text-dim); opacity: 0.45; }
+  .compare-note { text-align: center; font-size: 12px; color: var(--text-dim); margin-top: 16px; }
+  @media (max-width: 520px) {
+    .compare-row { grid-template-columns: 1fr 58px 58px; }
+    .compare-line .cf { font-size: 12px; padding: 11px 12px; }
+    .compare-val { font-size: 11px; }
+  }
 </style>
 <script>document.documentElement.classList.add('js');</script>
 </head>
@@ -1036,7 +1001,7 @@
 </section>
 
 <!-- ===== SOLUTION FLOW (課題 → 解決の橋渡し) ===== -->
-<section class="band-tint solution">
+<section id="features" class="band-tint solution">
   <div class="container">
     <div class="section-eyebrow">SOLUTION · 解決</div>
     <h2 class="section-title">
@@ -1079,55 +1044,6 @@
       </div>
     </div>
     <p class="flow-closing">毎日の値付けと在庫チェックから解放され、本来の販売活動に集中できます。</p>
-  </div>
-</section>
-
-<!-- ===== FEATURES ===== -->
-<section id="features" class="band-white">
-  <div class="container">
-    <div class="section-eyebrow">主な機能</div>
-    <h2 class="section-title">
-      仕入れから出品・価格・鑑定まで、<br>
-      <em>毎日の手作業を AI に任せる。</em>
-    </h2>
-
-    <div class="feat-grid" style="grid-template-rows:auto auto;margin-top:8px;">
-      <!-- 核機能: 自動価格 -->
-      <div class="feat-card feat-hero">
-        <div class="feat-ico">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-5 4 3 6-7"/><path d="M21 8v4h-4"/></svg>
-        </div>
-        <div class="feat-tag">★ 核機能</div>
-        <div class="feat-name">相場に合わせて、<br>出品価格を自動で。</div>
-        <div class="feat-desc">eBay の Sold 履歴・為替・国際送料・手数料から、利益が出る推奨価格を AI が算出。現在価格との差分と根拠つきで提示し、承認すれば eBay に反映。毎日の値付けチェックから解放されます。</div>
-        <div class="feat-hero-visual">
-          <svg width="100%" height="80" viewBox="0 0 460 80" preserveAspectRatio="xMidYMid meet">
-            <defs><linearGradient id="featG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#6366f1" stop-opacity="0.35"/><stop offset="100%" stop-color="#6366f1" stop-opacity="0"/></linearGradient></defs>
-            <path d="M0,58 L40,52 L80,56 L120,42 L160,46 L200,30 L240,34 L280,22 L320,26 L360,14 L400,17 L440,7 L460,10 L460,80 L0,80 Z" fill="url(#featG)"/>
-            <polyline points="0,58 40,52 80,56 120,42 160,46 200,30 240,34 280,22 320,26 360,14 400,17 440,7 460,10" stroke="#6366f1" stroke-width="2" fill="none"/>
-            <circle cx="460" cy="10" r="4" fill="#d97706"/>
-          </svg>
-        </div>
-      </div>
-
-      <!-- 在庫 × eBay 自動同期 -->
-      <div class="feat-card acc-cyan">
-        <div class="feat-ico">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2v6h-6"/><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M3 22v-6h6"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/></svg>
-        </div>
-        <div class="feat-name">在庫 × eBay 自動同期</div>
-        <div class="feat-desc">eBay の出品と手元の在庫を自動で突合。各カードに eBay 相場・国内相場・推奨価格・鑑定の期待利益までまとめて表示。売れたら在庫も自動で反映します。</div>
-      </div>
-
-      <!-- PSA 鑑定 ROI -->
-      <div class="feat-card acc-amber">
-        <div class="feat-ico">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 19.3l-4.8 2.4.9-5.4-3.9-3.8 5.4-.8z"/></svg>
-        </div>
-        <div class="feat-name">PSA 鑑定 ROI</div>
-        <div class="feat-desc">素体の相場と PSA10 の相場を比較し、鑑定で増える期待利益(ROI)を自動で算出。出す価値のあるカードだけに、迷わず絞り込めます。</div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -1197,6 +1113,105 @@
         </ul>
         <a href="https://cardnorth-app.vercel.app/signup" class="cta-primary">Pro を14日間無料で試す</a>
       </div>
+    </div>
+
+    <!-- 機能比較表(Free vs Pro)-->
+    <div class="compare-wrap">
+      <div class="compare-lead">
+        <div class="section-eyebrow">Free vs Pro</div>
+        <h3>機能比較</h3>
+        <p>Pro なら 8 つの機能が解放、さらに在庫上限が無制限に。</p>
+      </div>
+      <div class="compare">
+        <div class="compare-row compare-thead">
+          <div>機能</div>
+          <div class="col-free">Free</div>
+          <div class="col-pro">Pro</div>
+        </div>
+
+        <div class="compare-group">在庫管理</div>
+        <div class="compare-row compare-line">
+          <div class="cf">在庫に登録できるカード数</div>
+          <div class="cv"><span class="compare-val free">100枚まで</span></div>
+          <div class="cv is-pro"><span class="compare-val pro">無制限</span></div>
+        </div>
+        <div class="compare-row compare-line">
+          <div class="cf">在庫の追加・編集・削除</div>
+          <div class="cv"><span class="ck free"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+          <div class="cv is-pro"><span class="ck pro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+        </div>
+        <div class="compare-row compare-line">
+          <div class="cf">CSV から一括取り込み</div>
+          <div class="cv"><span class="ck free"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+          <div class="cv is-pro"><span class="ck pro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+        </div>
+
+        <div class="compare-group">相場</div>
+        <div class="compare-row compare-line">
+          <div class="cf">カード追加時に相場 1 回取得</div>
+          <div class="cv"><span class="ck free"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+          <div class="cv is-pro"><span class="ck pro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+        </div>
+        <div class="compare-row compare-line">
+          <div class="cf">毎日自動で相場を更新</div>
+          <div class="cv"><span class="ck-no"></span></div>
+          <div class="cv is-pro"><span class="ck pro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+        </div>
+        <div class="compare-row compare-line">
+          <div class="cf">「相場を今すぐ更新」ボタン</div>
+          <div class="cv"><span class="ck-no"></span></div>
+          <div class="cv is-pro"><span class="ck pro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+        </div>
+
+        <div class="compare-group">eBay 連携</div>
+        <div class="compare-row compare-line">
+          <div class="cf">数量・価格を変えると eBay にも自動反映</div>
+          <div class="cv"><span class="ck-no"></span></div>
+          <div class="cv is-pro"><span class="ck pro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+        </div>
+        <div class="compare-row compare-line">
+          <div class="cf">売れたら自動で「売却済み」に</div>
+          <div class="cv"><span class="ck-no"></span></div>
+          <div class="cv is-pro"><span class="ck pro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+        </div>
+
+        <div class="compare-group">自動価格</div>
+        <div class="compare-row compare-line">
+          <div class="cf">毎朝、推奨価格を自動計算</div>
+          <div class="cv"><span class="ck-no"></span></div>
+          <div class="cv is-pro"><span class="ck pro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+        </div>
+        <div class="compare-row compare-line">
+          <div class="cf">推奨価格をワンクリックで eBay に反映</div>
+          <div class="cv"><span class="ck-no"></span></div>
+          <div class="cv is-pro"><span class="ck pro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+        </div>
+
+        <div class="compare-group">PSA 鑑定</div>
+        <div class="compare-row compare-line">
+          <div class="cf">鑑定候補リスト(ROI 表示)</div>
+          <div class="cv"><span class="ck free"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+          <div class="cv is-pro"><span class="ck pro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+        </div>
+        <div class="compare-row compare-line">
+          <div class="cf">PSA 提出セット作成・記録・戻り入力</div>
+          <div class="cv"><span class="ck-no"></span></div>
+          <div class="cv is-pro"><span class="ck pro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+        </div>
+        <div class="compare-row compare-line">
+          <div class="cf">提出時に eBay 出品数量を自動調整</div>
+          <div class="cv"><span class="ck-no"></span></div>
+          <div class="cv is-pro"><span class="ck pro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+        </div>
+
+        <div class="compare-group">その他</div>
+        <div class="compare-row compare-line">
+          <div class="cf">利益シミュレータ</div>
+          <div class="cv"><span class="ck free"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+          <div class="cv is-pro"><span class="ck pro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+        </div>
+      </div>
+      <p class="compare-note">※ Pro は14日間無料お試し、解約はいつでも可能(Stripe の安全な管理画面から)。</p>
     </div>
   </div>
 </section>
