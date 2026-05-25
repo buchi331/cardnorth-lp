@@ -836,6 +836,68 @@
   }
   .faq-item[open] summary::after { transform: rotate(45deg); }
   .faq-item p { margin: 0 0 18px; color: var(--text-mid); line-height: 1.9; font-size: 14.5px; }
+
+  /* ===== Media slot (差し替え可能な画像枠 — 今は SVG、後で <img> に) ===== */
+  .media-slot {
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    margin-bottom: 22px;
+  }
+  .media-slot > img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .media-slot > svg { width: auto; height: 46px; display: block; }
+  .media-slot.slot-problem {
+    background: linear-gradient(135deg, #eef0f6 0%, #e3e7f0 100%);
+    color: #94a3b8;
+  }
+  .media-slot.slot-solution {
+    background: linear-gradient(135deg, rgba(99,102,241,0.14) 0%, rgba(99,102,241,0.05) 100%);
+    color: var(--indigo);
+  }
+
+  /* ===== Solution flow band (課題 → 解決 の橋渡し) ===== */
+  .solution .section-eyebrow { display: block; text-align: center; }
+  .solution .section-title { text-align: center; margin-left: auto; margin-right: auto; margin-bottom: 18px; }
+  .solution .section-lead { text-align: center; margin-left: auto; margin-right: auto; max-width: 620px; margin-bottom: 48px; }
+  .flow-box {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 42px 30px;
+    box-shadow: 0 1px 2px rgba(15,23,42,0.03), 0 28px 64px -32px rgba(15,23,42,0.30);
+    display: flex;
+    align-items: stretch;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .flow-step { flex: 1; display: flex; flex-direction: column; align-items: flex-start; padding: 0 22px; }
+  .flow-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600; font-size: 11.5px; letter-spacing: 0.14em;
+    color: var(--indigo); background: rgba(99,102,241,0.10);
+    padding: 5px 13px; border-radius: 999px; margin-bottom: 16px;
+  }
+  .flow-step h3 { font-size: 17px; font-weight: 700; margin: 2px 0 8px; letter-spacing: -0.01em; }
+  .flow-step p { font-size: 13.5px; color: var(--text-mid); line-height: 1.8; }
+  .flow-step .media-slot { width: 100%; }
+  .flow-arrow {
+    display: flex; align-items: center; justify-content: center;
+    flex: 0 0 auto; color: var(--indigo); opacity: 0.45;
+    padding-top: 60px;
+  }
+  .flow-arrow svg { width: 22px; height: 22px; display: block; }
+  .flow-closing {
+    text-align: center; margin: 30px auto 0; max-width: 640px;
+    font-size: 14.5px; color: var(--text-mid); line-height: 1.8;
+  }
+  @media (max-width: 800px) {
+    .flow-box { flex-direction: column; padding: 28px 24px; }
+    .flow-arrow { display: none; }
+    .flow-step { padding: 24px 0; border-top: 1px solid var(--line); }
+    .flow-step:first-of-type { border-top: 0; padding-top: 0; }
+  }
 </style>
 </head>
 <body>
@@ -921,21 +983,77 @@
     </p>
     <div class="pain-grid">
       <div class="pain-card">
+        <div class="media-slot slot-problem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        </div>
         <div class="pain-num">PAIN 01</div>
         <div class="pain-text">毎日相場を追って、価格調整するのが面倒。</div>
         <div class="pain-detail">eBay と国内カードショップの相場は日々動く。100枚超の出品すべてを毎日チェックして値段を更新するのは、現実的に追いきれない。</div>
       </div>
       <div class="pain-card">
+        <div class="media-slot slot-problem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 7 9 13 13 9 21 17"/><polyline points="16 17 21 17 21 12"/></svg>
+        </div>
         <div class="pain-num">PAIN 02</div>
         <div class="pain-text">価格調整を逃すと、機会損失と売れ残りの両方が発生。</div>
         <div class="pain-detail">海外で価格が立った時の値上げを逃すと利益が逃げる。逆に相場が下がったのに高値で放置すると、いつまで経っても売れない。</div>
       </div>
       <div class="pain-card">
+        <div class="media-slot slot-problem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M3 14h18M9 4v16M15 4v16"/></svg>
+        </div>
         <div class="pain-num">PAIN 03</div>
         <div class="pain-text">eBay 出品が100枚を超えると、Excel管理が限界。</div>
         <div class="pain-detail">SKU・コンディション・PSAグレード別に管理する必要があり、出品・更新・売却記録の手間で、本来の販売活動に時間が回らなくなる。</div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ===== SOLUTION FLOW (課題 → 解決の橋渡し) ===== -->
+<section class="band-tint solution">
+  <div class="container">
+    <div class="section-eyebrow">SOLUTION · 解決</div>
+    <h2 class="section-title">
+      CardNorth なら、<br>
+      <em>その手間をまるごと自動化。</em>
+    </h2>
+    <p class="section-lead">
+      eBay 出品の取り込みから、相場・利益の計算、価格の反映・在庫同期までを、ひとつの流れで。
+    </p>
+    <div class="flow-box">
+      <div class="flow-step">
+        <div class="media-slot slot-solution">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v10"/><path d="M8 9l4 4 4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+        </div>
+        <div class="flow-badge">STEP 01</div>
+        <h3>取り込む</h3>
+        <p>eBay 出品をボタンひとつで同期(CSV も可)。在庫と出品のズレを解消します。</p>
+      </div>
+      <div class="flow-arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+      </div>
+      <div class="flow-step">
+        <div class="media-slot slot-solution">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/></svg>
+        </div>
+        <div class="flow-badge">STEP 02</div>
+        <h3>AI が計算</h3>
+        <p>相場・為替・国際送料・eBay 手数料から、利益の出る推奨価格と鑑定 ROI を自動算出します。</p>
+      </div>
+      <div class="flow-arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+      </div>
+      <div class="flow-step">
+        <div class="media-slot slot-solution">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg>
+        </div>
+        <div class="flow-badge">STEP 03</div>
+        <h3>反映する</h3>
+        <p>推奨価格を承認すれば eBay に反映。売れたら在庫も自動で最新になります。</p>
+      </div>
+    </div>
+    <p class="flow-closing">毎日の値付けと在庫チェックから解放され、本来の販売活動に集中できます。</p>
   </div>
 </section>
 
