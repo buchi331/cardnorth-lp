@@ -899,26 +899,26 @@
     .flow-step:first-of-type { border-top: 0; padding-top: 0; }
   }
 
-  /* ===== 課題をヒーローに近づけ、解決へ流れる動線 ===== */
-  .pain-sec { padding-top: 40px; padding-bottom: 4px; }
-  .solution { padding-top: 60px; }
-  .flow-connector {
-    display: flex; flex-direction: column; align-items: center;
-    margin-top: 40px;
+  /* ===== 課題をヒーローに近づけ、解決へ流す(np式の囲み + 下向きの尾) ===== */
+  .pain-sec { padding-top: 40px; padding-bottom: 34px; }
+  .solution { padding-top: 66px; }
+  .pain-bubble {
+    position: relative;
+    background: #e9eaf4;
+    border-radius: 28px;
+    padding: 30px;
+    margin-top: 4px;
   }
-  .flow-connector .fc-line {
-    width: 2px; height: 40px; border-radius: 2px;
-    background: linear-gradient(180deg, transparent, var(--indigo-light));
+  .pain-bubble::after {
+    content: '';
+    position: absolute; left: 50%; bottom: -27px;
+    transform: translateX(-50%);
+    width: 0; height: 0;
+    border-left: 36px solid transparent;
+    border-right: 36px solid transparent;
+    border-top: 28px solid #e9eaf4;
   }
-  .flow-connector .fc-dot {
-    width: 46px; height: 46px; border-radius: 50%;
-    background: var(--indigo); color: #fff;
-    display: grid; place-items: center; margin-top: -1px;
-    box-shadow: 0 14px 30px -8px rgba(79,70,229,0.55);
-    animation: fc-bob 2.4s ease-in-out infinite;
-  }
-  .flow-connector .fc-dot svg { width: 22px; height: 22px; display: block; }
-  @keyframes fc-bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
+  @media (max-width: 640px) { .pain-bubble { padding: 16px; border-radius: 22px; } }
 
   /* スクロールで お悩み → 解決フロー が順に浮かび上がる演出(JS有効時のみ・reduced-motion尊重) */
   @media (prefers-reduced-motion: no-preference) {
@@ -1011,6 +1011,7 @@
       eBay 相場と国内相場を追いながら、在庫と価格を毎日調整し続けるのは容易ではありません。<br>
       CardNorth は、その手作業を AI が自動化します。
     </p>
+    <div class="pain-bubble">
     <div class="pain-grid">
       <div class="pain-card acc-rose">
         <div class="media-slot slot-accent">
@@ -1037,11 +1038,6 @@
         <div class="pain-detail">SKU・コンディション・PSAグレード別に管理する必要があり、出品・更新・売却記録の手間で、本来の販売活動に時間が回らなくなる。</div>
       </div>
     </div>
-    <div class="flow-connector">
-      <span class="fc-line"></span>
-      <span class="fc-dot">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M6 13l6 6 6-6"/></svg>
-      </span>
     </div>
   </div>
 </section>
