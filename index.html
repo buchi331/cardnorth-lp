@@ -128,6 +128,30 @@
     align-items: center;
     gap: 22px;
   }
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 44px; height: 44px;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 8px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 24px; height: 2px;
+    background: var(--text-main);
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.2s ease;
+  }
+  header.menu-open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  header.menu-open .nav-toggle span:nth-child(2) { opacity: 0; }
+  header.menu-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
   .x-link {
     display: inline-flex;
     align-items: center;
@@ -463,8 +487,52 @@
   @media (max-width: 640px) {
     .hero { padding: 70px 0 32px; }
     section { padding: 56px 0; }
-    .header-nav { display: none; }
     .footer-inner { flex-direction: column; align-items: flex-start; }
+
+    /* ===== mobile hamburger menu ===== */
+    .nav-toggle { display: inline-flex; }
+    .header-right {
+      position: absolute;
+      top: 100%; left: 0; right: 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      padding: 6px 24px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 26px 50px -26px rgba(15,23,42,0.30);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+    }
+    header.menu-open .header-right {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .header-nav {
+      flex-direction: column;
+      gap: 0;
+      align-items: stretch;
+    }
+    .header-nav a {
+      padding: 15px 2px;
+      font-size: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+    .header-cta {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .btn-login, .btn-signup {
+      width: 100%;
+      text-align: center;
+      padding-top: 13px;
+      padding-bottom: 13px;
+    }
   }
 
   /* ===== Product shot frame (browser window) ===== */
@@ -920,7 +988,7 @@
       </span>
       CardNorth
     </a>
-    <div class="header-right">
+    <div class="header-right" id="site-menu">
       <nav class="header-nav">
         <a href="#features">機能</a>
         <a href="#pricing">料金</a>
@@ -931,6 +999,9 @@
         <a href="https://cardnorth-app.vercel.app/signup" class="btn-signup">無料で始める</a>
       </div>
     </div>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="site-menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 
@@ -1312,6 +1383,32 @@
       });
     }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
     document.querySelectorAll('.pain-card, .flow-step').forEach(function (el) { io.observe(el); });
+  })();
+</script>
+
+<script>
+  (function () {
+    var header = document.querySelector('header');
+    var toggle = document.getElementById('navToggle');
+    var menu = document.getElementById('site-menu');
+    if (!header || !toggle || !menu) return;
+    function setOpen(open) {
+      header.classList.toggle('menu-open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+    }
+    toggle.addEventListener('click', function () {
+      setOpen(!header.classList.contains('menu-open'));
+    });
+    menu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () { setOpen(false); });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') setOpen(false);
+    });
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 640) setOpen(false);
+    });
   })();
 </script>
 
