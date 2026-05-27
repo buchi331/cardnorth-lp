@@ -550,6 +550,17 @@
       transform: translateX(0);
       visibility: visible;
     }
+
+    /* ===== mobile hero CTA: 主CTAを全幅・ログインは控えめに ===== */
+    .hero-cta-row { flex-direction: column; align-items: stretch; gap: 12px; flex-wrap: nowrap; }
+    .hero-cta-row .btn-primary,
+    .hero-cta-row .btn-ghost { width: 100%; text-align: center; }
+    .hero-cta-row .btn-ghost {
+      padding-top: 13px;
+      padding-bottom: 13px;
+      border-color: rgba(255,255,255,0.32);
+      font-weight: 600;
+    }
   }
 
   /* ===== Product shot frame (browser window) ===== */
@@ -674,10 +685,8 @@
     box-shadow: 0 44px 90px -28px rgba(0,0,0,0.5), 0 12px 30px -12px rgba(0,0,0,0.3);
   }
   @media (max-width: 920px) {
-    .hero-inner { grid-template-columns: 1fr; gap: 38px; padding: 56px 22px 100px; text-align: center; }
-    .hero-copy .hero-sub { margin-left: auto; margin-right: auto; }
-    .hero-copy .hero-eyebrow { margin-left: auto; margin-right: auto; }
-    .hero-cta-row { justify-content: center; }
+    .hero-inner { grid-template-columns: 1fr; gap: 38px; padding: 56px 22px 100px; text-align: left; }
+    .hero-cta-row { justify-content: flex-start; }
   }
 
   /* ===== Laptop mockup ===== */
