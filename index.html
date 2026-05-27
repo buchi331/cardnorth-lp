@@ -134,24 +134,65 @@
     justify-content: center;
     align-items: center;
     gap: 5px;
-    width: 44px; height: 44px;
+    width: 46px; height: 46px;
     padding: 0;
-    background: none;
+    border-radius: 50%;
+    background: var(--indigo);
     border: none;
     cursor: pointer;
     margin-left: 8px;
+    box-shadow: 0 6px 16px -5px rgba(79,70,229,0.55);
     -webkit-tap-highlight-color: transparent;
   }
   .nav-toggle span {
     display: block;
-    width: 24px; height: 2px;
-    background: var(--text-main);
+    width: 20px; height: 2px;
+    background: #fff;
     border-radius: 2px;
-    transition: transform 0.25s ease, opacity 0.2s ease;
   }
-  header.menu-open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-  header.menu-open .nav-toggle span:nth-child(2) { opacity: 0; }
-  header.menu-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  /* ===== mobile full-screen menu (hidden on desktop) ===== */
+  .mobile-menu { display: none; }
+  .mobile-menu-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 22px;
+  }
+  .menu-close {
+    width: 44px; height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(15,23,42,0.06);
+    border: none;
+    cursor: pointer;
+    color: var(--text-main);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .menu-close svg { width: 20px; height: 20px; }
+  .mobile-menu-nav { display: flex; flex-direction: column; }
+  .mobile-menu-nav a {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--text-main);
+    padding: 17px 2px;
+    border-bottom: 1px solid var(--line);
+  }
+  .mobile-menu-cta {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .mobile-menu-cta .btn-signup,
+  .mobile-menu-cta .btn-login {
+    width: 100%;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 16px;
+  }
   .x-link {
     display: inline-flex;
     align-items: center;
@@ -491,47 +532,23 @@
 
     /* ===== mobile hamburger menu ===== */
     .nav-toggle { display: inline-flex; }
-    .header-right {
-      position: absolute;
-      top: 100%; left: 0; right: 0;
+    .header-right { display: none; }
+    .mobile-menu {
+      display: flex;
       flex-direction: column;
-      align-items: stretch;
-      gap: 0;
-      padding: 6px 24px 24px;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
       background: #fff;
-      border-bottom: 1px solid var(--line);
-      box-shadow: 0 26px 50px -26px rgba(15,23,42,0.30);
-      opacity: 0;
+      padding: 20px 24px 32px;
+      overflow-y: auto;
+      transform: translateX(100%);
       visibility: hidden;
-      transform: translateY(-10px);
-      transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+      transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.32s;
     }
-    header.menu-open .header-right {
-      opacity: 1;
+    .mobile-menu.open {
+      transform: translateX(0);
       visibility: visible;
-      transform: translateY(0);
-    }
-    .header-nav {
-      flex-direction: column;
-      gap: 0;
-      align-items: stretch;
-    }
-    .header-nav a {
-      padding: 15px 2px;
-      font-size: 16px;
-      border-bottom: 1px solid var(--line);
-    }
-    .header-cta {
-      flex-direction: column;
-      align-items: stretch;
-      gap: 12px;
-      margin-top: 18px;
-    }
-    .btn-login, .btn-signup {
-      width: 100%;
-      text-align: center;
-      padding-top: 13px;
-      padding-bottom: 13px;
     }
   }
 
@@ -988,7 +1005,7 @@
       </span>
       CardNorth
     </a>
-    <div class="header-right" id="site-menu">
+    <div class="header-right">
       <nav class="header-nav">
         <a href="#features">機能</a>
         <a href="#pricing">料金</a>
@@ -999,11 +1016,49 @@
         <a href="https://cardnorth-app.vercel.app/signup" class="btn-signup">無料で始める</a>
       </div>
     </div>
-    <button class="nav-toggle" id="navToggle" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="site-menu">
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobileMenu">
       <span></span><span></span><span></span>
     </button>
   </div>
 </header>
+
+<!-- ===== Mobile menu overlay (640px 以下) ===== -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu-head">
+    <span class="brand">
+      <span class="brand-mark">
+        <svg width="40" height="40" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="brandBgMenu" cx="0.5" cy="0.45" r="0.7">
+              <stop offset="0%" stop-color="#6366f1"/>
+              <stop offset="55%" stop-color="#4f46e5"/>
+              <stop offset="100%" stop-color="#312e81"/>
+            </radialGradient>
+          </defs>
+          <rect width="1024" height="1024" fill="url(#brandBgMenu)"/>
+          <g transform="translate(512, 512)">
+            <polygon points="-266,63 154,63 210,189 -210,189" fill="#ffffff" opacity="0.4"/>
+            <polygon points="-238,-63 182,-63 238,63 -182,63" fill="#ffffff" opacity="0.7"/>
+            <polygon points="-210,-189 210,-189 266,-63 -154,-63" fill="#ffffff"/>
+          </g>
+        </svg>
+      </span>
+      CardNorth
+    </span>
+    <button class="menu-close" id="menuClose" type="button" aria-label="メニューを閉じる">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <nav class="mobile-menu-nav">
+    <a href="#features">機能</a>
+    <a href="#pricing">料金</a>
+    <a href="#faq">よくある質問</a>
+  </nav>
+  <div class="mobile-menu-cta">
+    <a href="https://cardnorth-app.vercel.app/signup" class="btn-signup">無料で始める</a>
+    <a href="https://cardnorth-app.vercel.app/login" class="btn-login">ログイン</a>
+  </div>
+</div>
 
 <!-- ===== HERO ===== -->
 <section class="hero">
@@ -1388,18 +1443,18 @@
 
 <script>
   (function () {
-    var header = document.querySelector('header');
     var toggle = document.getElementById('navToggle');
-    var menu = document.getElementById('site-menu');
-    if (!header || !toggle || !menu) return;
+    var menu = document.getElementById('mobileMenu');
+    var closeBtn = document.getElementById('menuClose');
+    if (!toggle || !menu) return;
     function setOpen(open) {
-      header.classList.toggle('menu-open', open);
+      menu.classList.toggle('open', open);
+      menu.setAttribute('aria-hidden', open ? 'false' : 'true');
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      toggle.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+      document.body.style.overflow = open ? 'hidden' : '';
     }
-    toggle.addEventListener('click', function () {
-      setOpen(!header.classList.contains('menu-open'));
-    });
+    toggle.addEventListener('click', function () { setOpen(true); });
+    if (closeBtn) closeBtn.addEventListener('click', function () { setOpen(false); });
     menu.querySelectorAll('a').forEach(function (a) {
       a.addEventListener('click', function () { setOpen(false); });
     });
