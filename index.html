@@ -536,11 +536,22 @@
   }
   .hero-copy { color: #fff; }
   .hero-copy .hero-eyebrow {
-    background: rgba(255,255,255,0.12);
-    border-color: rgba(255,255,255,0.28);
-    color: rgba(255,255,255,0.92);
+    background: none;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    gap: 12px;
+    color: rgba(255,255,255,0.82);
+    letter-spacing: 0.06em;
+    text-transform: none;
   }
-  .hero-copy .hero-eyebrow::before { background: #fbbf24; box-shadow: 0 0 10px #fbbf24; }
+  .hero-copy .hero-eyebrow::before {
+    width: 28px; height: 1px;
+    border-radius: 0;
+    background: #fbbf24;
+    box-shadow: none;
+    animation: none;
+  }
   .hero-copy h1 {
     color: #fff;
     font-family: 'Plus Jakarta Sans','Noto Sans JP',sans-serif;
@@ -940,7 +951,7 @@
         <a href="https://cardnorth-app.vercel.app/signup" class="btn-primary">無料で始める</a>
         <a href="https://cardnorth-app.vercel.app/login" class="btn-ghost">ログイン</a>
       </div>
-      <div class="hero-cta-note">Free はずっと無料・カード登録不要 · Pro は14日間の無料トライアル</div>
+      <div class="hero-cta-note">Free はずっと無料 · Pro は14日間の無料トライアル</div>
     </div>
     <div class="hero-shot-wrap">
       <div class="device-stack">
@@ -1072,13 +1083,13 @@
       <em>無理なく始められる価格。</em>
     </h2>
     <p class="section-lead">
-      Free プランはずっと無料、カード登録も不要。Pro は月¥2,980(年額なら¥29,800・2ヶ月分お得)、14日間の無料トライアルから。
+      Free プランはずっと無料。Pro は月¥2,980(年額なら¥29,800・2ヶ月分お得)、14日間の無料トライアルから。
     </p>
     <div class="price-grid">
       <div class="price-card">
         <div class="price-plan">FREE</div>
         <div class="price-amount">¥0</div>
-        <div class="price-note">ずっと無料 · カード登録不要</div>
+        <div class="price-note">ずっと無料</div>
         <ul class="price-feats">
           <li>在庫管理 100 枚まで</li>
           <li>カード追加時に相場 1 回取得</li>
@@ -1241,7 +1252,7 @@
     <div class="faq-list">
       <details class="faq-item">
         <summary>無料の範囲はどこまでですか?</summary>
-        <p>Free プランで在庫 100 枚までの管理、相場の取得、PSA 鑑定候補の閲覧、利益シミュレーターが使えます。クレジットカードの登録は不要です。</p>
+        <p>Free プランで在庫 100 枚までの管理、相場の取得、PSA 鑑定候補の閲覧、利益シミュレーターが使えます。</p>
       </details>
       <details class="faq-item">
         <summary>Pro の解約はいつでもできますか?</summary>
